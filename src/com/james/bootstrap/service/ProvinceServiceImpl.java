@@ -54,7 +54,7 @@ public class ProvinceServiceImpl implements ProvinceService{
 
         provinces.add(guangdong);
         provinces.add(zhejiang);
-        provinces.add(zhejiang);
+        provinces.add(henan);
 
 
 
