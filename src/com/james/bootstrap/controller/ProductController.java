@@ -32,11 +32,14 @@ public String inputProduct(Model model){
     return "ProductAddForm";
 
 }
-@RequestMapping("/show_product")
+@RequestMapping("/save_product")
 public String saveProduct(Model model, @ModelAttribute Product product, HttpServletRequest servletRequest){
 
+    logger.info("saveProduct method is called");
+    logger.info(product.toString());
     List<MultipartFile> files=product.getImages();
-
+    Category category=productService.getCategory(product.getCategory().getId());
+    product.setCategory(category);
     if(null!=files&&files.size()>0){
         for(MultipartFile imagefile:files){
             String filename=imagefile.getOriginalFilename();

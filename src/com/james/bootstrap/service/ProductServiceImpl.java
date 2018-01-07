@@ -28,4 +28,15 @@ public class ProductServiceImpl implements ProductService{
 
 
     }
+
+    @Override
+    public Category getCategory(long id) {
+        Category target=null;
+        for(Category category:categories){
+            if(category.getId()==id){
+                target=category;
+            }
+        }
+        return target;
+    }
 }

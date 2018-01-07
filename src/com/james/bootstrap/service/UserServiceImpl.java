@@ -31,6 +31,23 @@ public class UserServiceImpl  implements  UserService{
         users.add(user4);
     }
 
+    @Override
+    public User addUser(User user) {
 
+        user.setId(getNextId());
+        users.add(user);
+        return user;
+    }
 
+    @Override
+    public long getNextId() {
+        long maxId=0l;
+        for(User user:users){
+            if(user.getId()>maxId){
+                maxId=user.getId();
+            }
+        }
+
+        return maxId+1;
+    }
 }

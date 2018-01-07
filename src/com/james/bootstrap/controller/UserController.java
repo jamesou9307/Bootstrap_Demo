@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -34,5 +35,19 @@ public class UserController {
         List<User> users=userService.getUsers();
         String usersJson= JSON.toJSONString(users);
         return usersJson;
+    }
+
+    @RequestMapping("/input_user")
+    public String addUser(Model model){
+        model.addAttribute("user",new User());
+        return "UserAddForm";
+    }
+
+    @RequestMapping("/save_user")
+    public String saveUser(Model model, @ModelAttribute User user){
+        userService.addUser(user);
+        List<User> users=userService.getUsers();
+        model.addAttribute("users",users);
+        return "UserDetails";
     }
 }
