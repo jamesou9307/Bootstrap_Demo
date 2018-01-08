@@ -43,6 +43,24 @@
             }
 
         }
+        function getUserById(id){
+            $.ajax({
+                url:"get_user",
+                type:"POST",
+                data:{id:id},
+                dataType:"json",
+                async:false,
+                cache:false,
+                success:function (data) {
+                    console.log(data);
+                },
+                error:function (data) {
+                    console.log(0);
+                }
+
+
+            })
+        }
     </script>
 </head>
 <body>
@@ -67,7 +85,8 @@
         </tbody>
     </table>
 
-    <button onclick="loadJson()">getJson</button>
+    <button class="btn-default" onclick="loadJson()">getJson</button>
+    <button class="btn-primary" onclick="getUserById(4)">getUserById</button>
 </div>
 
 </body>
