@@ -50,4 +50,15 @@ public class UserServiceImpl  implements  UserService{
 
         return maxId+1;
     }
+
+    @Override
+    public User getUser(Long id) {
+        User target=null;
+        for(User user:users){
+            if(user.getId()==id){
+                target=user;
+            }
+        }
+        return target;
+    }
 }

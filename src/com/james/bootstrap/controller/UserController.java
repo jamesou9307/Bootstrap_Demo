@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -49,5 +50,15 @@ public class UserController {
         List<User> users=userService.getUsers();
         model.addAttribute("users",users);
         return "UserDetails";
+    }
+
+    @ResponseBody
+    @RequestMapping("/get_user")
+    //@Requstparam(required=false)表示id可以传值为null,required为true的话表示一定要传
+    public String getUser(@RequestParam(value = "id",required = false) Long  userid){
+        logger.info(userid.longValue());
+        User user=userService.getUser(userid);
+      String userJson=JSON.toJSONString(user);
+      return userJson;
     }
 }
