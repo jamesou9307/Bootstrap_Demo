@@ -47,5 +47,16 @@
         <li role="presentation">About us</li>
     </ul>
 </div>
+<div class="dropup">
+    <button class="btn btn-primary dropdown-toggle" id="dropdown3" data-toggle="dropdown">下拉菜单</button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown3" role="menu">
+        <c:forEach items="${users.menuItems}" var="menuItem">
+            <li role="presentation">
+                <a role="menuitem" href="${menuItem.action}">${menuItem.menuname}</a>
+            </li>
+        </c:forEach>
+        <li role="menuitem" class="dropdown-header">title</li>
+    </ul>
+</div>
 </body>
 </html>
