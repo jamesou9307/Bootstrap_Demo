@@ -29,7 +29,7 @@
             </li>
         </c:forEach>
         <li role="menuitem" class="divider"></li>
-        <li role="presentation">About us</li>
+        <li role="presentation"><a role="menuitem" href="#"></a></li>
     </ul>
 </div>
 <%--
