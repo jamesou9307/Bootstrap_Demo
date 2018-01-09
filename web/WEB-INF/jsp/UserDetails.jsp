@@ -87,6 +87,7 @@
 
     <button class="btn-default" onclick="loadJson()">getJson</button>
     <button class="btn-primary" onclick="getUserById(4)">getUserById</button>
+    <button class="btn-danger" onclick="getUserById(3)">getUserById</button>
 </div>
 
 </body>
