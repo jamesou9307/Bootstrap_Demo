@@ -16,7 +16,7 @@
     <script src="js/bootstrap.js"></script>
 </head>
 <body>
-<c:forEach items="${provinces}" var="province">
+<%--<c:forEach items="${provinces}" var="province">
     <p>Province Name:<c:out value="${province.provincename}"/></p>
     <p>Cities In The Province:</p>
     <ul>
@@ -24,6 +24,30 @@
         <li>${city.cityname}</li>
     </c:forEach>
     </ul>
-</c:forEach>
+</c:forEach>--%>
+
+<%--bootstrap折叠--%>
+<div class="panel-group" id="acordion">
+    <c:forEach items="${provinces}" var="province" varStatus="status">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data_parent="#acordion" href="#${'collapse'}${status.index}">
+                        ${province.provincename}
+                    </a>
+                </h4>
+            </div>
+            <div id="${'collapse'}${status.index}" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <ul>
+                        <c:forEach items="${province.cities}" var="city">
+                                <li>${city.cityname}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+</div>
 </body>
 </html>
